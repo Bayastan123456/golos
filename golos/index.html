@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+  />
+
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("golos-theme");
+      const isDark = savedTheme === "dark";
+
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.style.colorScheme =
+              isDark ? "dark" : "light";
+    } catch {
+      // По умолчанию светлая тема.
+    }
+  </script>
+
+  <title>Голос — развитие речи</title>
+</head>
+
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

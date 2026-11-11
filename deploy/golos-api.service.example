@@ -1,0 +1,23 @@
+[Unit]
+Description=Golos API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=golos
+Group=golos
+WorkingDirectory=/srv/golos/golos-api
+EnvironmentFile=/srv/golos/golos-api/.env
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node /srv/golos/golos-api/dist/main.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
